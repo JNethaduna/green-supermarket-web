@@ -1,0 +1,36 @@
+:root {
+  --primary-color: hsl(82, 44%, 50%);
+  --secondary-color: hsl(198, 51%, 20%);
+  --tertiary-color: hsl(48, 57%, 88%);
+  --text-color: hsl(0, 0%, 6%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--tertiary-color);
+  color: var(--text-color);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+
+header {
+  background: var(--secondary-color);
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+header .links a {
+  margin-left: 1rem;
+}

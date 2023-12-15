@@ -34,7 +34,7 @@ public class Order {
   private String status;
 
   @PrePersist
-  public void onCreate() {
+  protected void onCreate() {
     placedAt = new Timestamp(System.currentTimeMillis());
   }
 
