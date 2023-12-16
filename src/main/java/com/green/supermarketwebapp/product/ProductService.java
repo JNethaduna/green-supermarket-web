@@ -26,11 +26,10 @@ public class ProductService {
     }
   }
 
-  public void createProduct(Product product) {
-    productRepository.save(product);
+  public Long createProduct(Product product) {
+    return productRepository.save(product).getId();
   }
 
-  // TODO: Implement updateProduct
   public void updateProduct(Product product) {
     productRepository.save(product);
   }

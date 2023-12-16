@@ -13,7 +13,7 @@ Website for Green Supermarket - SE2 - PUSL2024
 ### Product
 
 - GET - `/product/{id}` - Product page
-- GET - `/product/list?category={category}&page={page}&size={size}` - Products page filtered by category
+- GET - `/product/list?category={category}&page={page}&size={size}` - Products page filtered by category if any
 - POST - `/product/add` - Add product
 - PUT - `/product/update` - Update product
 - DELETE - `/product/delete` - Delete product
