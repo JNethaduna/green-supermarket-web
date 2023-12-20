@@ -21,11 +21,11 @@ public class Customer {
   private String phone;
 
   // Setters
-  public void setFirstName(String fName) {
+  public void setFName(String fName) {
     this.fName = fName;
   }
 
-  public void setLastName(String lName) {
+  public void setLName(String lName) {
     this.lName = lName;
   }
 

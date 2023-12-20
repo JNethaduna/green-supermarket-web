@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <jsp:include page="components/document-head.jsp">
-    <jsp:param name="pageCss" value="/css/product.css" />
-  </jsp:include>
+  <head>
+    <jsp:include page="components/meta.jsp" />
+    <link rel="stylesheet" href="/css/product.css" />
+  </head>
   <body>
     <jsp:include page="components/header.jsp" />
     <main>
-      <div class="product">
-        <div class="product__image">
-          <!-- <img src="/images/products/${product.name}" alt="${product.name}" /> -->
-        </div>
-        <div class="product__info">
-          <a
-            class="product__category"
-            href="/product/list?category=${product.category}">
-            ${product.category}
+      <div class="image">
+        <img src="/images/products/apple.jpg" alt="Apple" />
+      </div>
+      <div class="info-wrapper">
+        <div class="info">
+          <a class="category" href="/product/list?category=fresh-produce">
+            Fresh Produce
           </a>
-          <h1 class="product__name">${product.name}</h1>
-          <p class="product__description">${product.description}</p>
-          <p class="product__price">Rs.${product.price}</p>
+          <h1 class="name">Apple</h1>
+          <p class="description">Apples are cool</p>
+          <p class="price">Rs.50.00</p>
           <form action="/cart" method="post">
-            <!-- <input type="hidden" name="id" value="${product.id}" /> -->
-            <input type="number" name="quantity" value="1" min="1" />
+            <input type="text" name="quantity" value="1" />
             <button type="submit">Add to cart</button>
           </form>
         </div>

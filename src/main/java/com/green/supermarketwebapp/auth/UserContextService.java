@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.green.supermarketwebapp.customer.Customer;
 import com.green.supermarketwebapp.customer.CustomerService;
+import com.green.supermarketwebapp.exceptions.UserNotLoggedInException;
 
 @Service
 public class UserContextService {
@@ -18,7 +19,7 @@ public class UserContextService {
   protected Authentication authentication() {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     if (authentication == null) {
-      throw new IllegalStateException("No user is currently logged in");
+      throw new UserNotLoggedInException("No user is currently logged in");
     }
     return authentication;
   }

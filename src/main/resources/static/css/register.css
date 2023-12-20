@@ -1,0 +1,100 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+}
+
+.wrapper {
+  background-color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 400px;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin: 50px auto;
+}
+
+.wrapper h1 {
+  font-size: 36px;
+  margin-bottom: 55px;
+}
+
+.input-box {
+  position: relative;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.input-box input {
+  width: 100%;
+  background: transparent;
+  outline: none;
+  border: 2px solid rgb(182, 179, 179);
+  border-radius: 40px;
+  font-size: 16px;
+  color: var(--text-color);
+  padding: 15px 45px 15px 20px;
+  box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.input-box i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.btn {
+  width: 100%;
+  padding: 15px 20px;
+  outline: none;
+  border-radius: 40px;
+  font-size: 16px;
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 3px solid var(--primary-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.login {
+  margin-top: 30px;
+}
+
+.login a {
+  font-weight: bold;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.login a:hover {
+  text-decoration: underline;
+}
+
+.terms {
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+.terms a {
+  font-weight: bold;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}

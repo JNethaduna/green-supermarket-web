@@ -16,10 +16,11 @@ public class ProductController {
     this.productService = productService;
   }
 
+  // Access to all
   @GetMapping("/product/{id}")
   public String getProduct(Model model, @PathVariable Long id) {
-    Product product = productService.getProduct(id);
-    model.addAttribute("product", product);
+    // Product product = productService.getProduct(id);
+    // model.addAttribute("product", product);
     return "product";
   }
 
@@ -33,20 +34,39 @@ public class ProductController {
     return "product-list";
   }
 
-  @PostMapping("/product/add")
+  // Manager access only
+  @GetMapping("/manage/product/{id}")
+  public String manageProduct(Model model, @PathVariable Long id) {
+    model.addAttribute("product", productService.getProduct(id));
+    model.addAttribute("manage", true);
+    return "product";
+  }
+
+  @GetMapping("/manage/product/list")
+  public String manageProductList(Model model,
+      @RequestParam(defaultValue = "") String category,
+      @RequestParam(defaultValue = "0") int page,
+      @RequestParam(defaultValue = "50") int size) {
+
+    model.addAttribute("products", productService.getProducts(category, page, size));
+    model.addAttribute("manage", true);
+    return "product-list";
+  }
+
+  @PostMapping("/manage/product/add")
   public String addProduct(@ModelAttribute Product product) {
     Long newProductId = productService.createProduct(product);
     return "redirect:/product/" + newProductId;
   }
 
-  @PostMapping("/product/update/{id}")
+  @PostMapping("/manage/product/update/{id}")
   public String updateProduct(@PathVariable Long id, @ModelAttribute Product product) {
     product.setId(id);
     productService.updateProduct(product);
     return "redirect:/product/" + id;
   }
 
-  @PostMapping("/product/delete/{id}")
+  @PostMapping("/manage/product/delete/{id}")
   public void deleteProduct(@PathVariable Long id) {
     productService.deleteProduct(id);
   }

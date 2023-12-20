@@ -23,9 +23,9 @@ public class CustomerService {
     return customerRepository.findByEmail(email).orElseThrow(() -> new NoSuchElementException("Customer not found"));
   }
 
-  public void createCustomer(Customer customer) {
+  public Customer createCustomer(Customer customer) {
     customer.setPassword(passwordEncoder.encode(customer.getPassword()));
-    customerRepository.save(customer);
+    return customerRepository.save(customer);
   }
 
   public void deleteCustomer(Long id) {

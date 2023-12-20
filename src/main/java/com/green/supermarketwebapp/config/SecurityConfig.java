@@ -27,10 +27,18 @@ public class SecurityConfig {
   @Bean
   SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
+        .csrf(csrf -> csrf.disable())
         .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-            .requestMatchers("/**").permitAll())
+            .requestMatchers("/user/**").hasRole("CUSTOMER")
+            .requestMatchers("/manager/**").hasRole("MANAGER")
+            .requestMatchers("/register", "/product/**").permitAll())
         .formLogin(formLogin -> formLogin
-            .loginPage("/login").permitAll());
+            .loginPage("/login")
+            .permitAll()
+            .usernameParameter("email")
+            .passwordParameter("password"))
+        .logout(logout -> logout
+            .logoutUrl("/logout").permitAll());
 
     return http.build();
   }

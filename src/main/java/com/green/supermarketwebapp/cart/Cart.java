@@ -20,6 +20,16 @@ public class Cart {
   private Product product;
 
   private int quantity;
+  private boolean selected;
+
+  public Cart() {
+  }
+
+  public Cart(Customer customer, Product product, int quantity) {
+    this.customer = customer;
+    this.product = product;
+    this.quantity = quantity;
+  }
 
   // Setters
   public void setCustomer(Customer customer) {
@@ -34,6 +44,10 @@ public class Cart {
     this.quantity = quantity;
   }
 
+  public void setSelected(boolean selected) {
+    this.selected = selected;
+  }
+
   // Getters
   public Customer getCustomer() {
     return customer;
@@ -45,5 +59,9 @@ public class Cart {
 
   public int getQuantity() {
     return quantity;
+  }
+
+  public boolean isSelected() {
+    return selected;
   }
 }

@@ -1,10 +1,11 @@
 package com.green.supermarketwebapp.product;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import com.green.supermarketwebapp.exceptions.ProductNotFoundException;
 
 @Service
 public class ProductService {
@@ -15,7 +16,8 @@ public class ProductService {
   }
 
   public Product getProduct(Long id) {
-    return productRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Product not found"));
+    return productRepository.findById(id)
+        .orElseThrow(() -> new ProductNotFoundException("Product with the Id does not exist"));
   }
 
   public List<Product> getProducts(String category, int page, int size) {

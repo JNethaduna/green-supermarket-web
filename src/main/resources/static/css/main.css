@@ -1,7 +1,7 @@
 :root {
-  --primary-color: hsl(0, 0%, 100%);
-  --secondary-color: hsl(130, 45%, 57%);
-  --tertiary-color: hsl(0, 0%, 98%);
+  --primary-color: hsl(130, 45%, 57%);
+  --secondary-color: hsl(0, 0%, 98%);
+  --tertiary-color: hsl(0, 0%, 92%);
   --text-color: hsl(0, 0%, 6%);
 }
 
@@ -14,8 +14,7 @@
 body {
   background-color: var(--tertiary-color);
   color: var(--text-color);
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 header {
@@ -24,6 +23,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 header a {
@@ -31,6 +32,16 @@ header a {
   text-decoration: none;
 }
 
+header .links {
+  display: flex;
+}
+
 header .links a {
   margin-left: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+header .links a i {
+  margin-right: 0.25rem;
 }

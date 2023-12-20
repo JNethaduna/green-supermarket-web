@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <jsp:include page="components/document-head.jspp">
-    <jsp:param name="pageCss" value="/css/product-list.css" />
-  </jsp:include>
-  <body></body>
+  <head>
+    <jsp:include page="components/meta.jsp" />
+    <link rel="stylesheet" href="/css/product-list.css" />
+  </head>
+  <body>
+    <jsp:include page="components/header.jsp" />
+  </body>
 </html>
