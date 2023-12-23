@@ -1,6 +1,4 @@
-package com.green.supermarketwebapp.config;
-
-import com.green.supermarketwebapp.auth.UserDetailsServiceImpl;
+package com.green.supermarketwebapp.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import com.green.supermarketwebapp.Services.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
@@ -29,9 +29,9 @@ public class SecurityConfig {
     http
         .csrf(csrf -> csrf.disable())
         .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
+            .requestMatchers("/register", "/product/**", "/**").permitAll()
             .requestMatchers("/user/**").hasRole("CUSTOMER")
-            .requestMatchers("/manager/**").hasRole("MANAGER")
-            .requestMatchers("/register", "/product/**").permitAll())
+            .requestMatchers("/manager/**").hasRole("MANAGER"))
         .formLogin(formLogin -> formLogin
             .loginPage("/login")
             .permitAll()

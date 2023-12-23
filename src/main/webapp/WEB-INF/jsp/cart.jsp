@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%> <%@page
+import="com.green.supermarketwebapp.Models.Cart"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,36 +12,21 @@
   <body>
     <jsp:include page="components/header.jsp" />
     <main>
-      <div class="cart-item">
-        <input type="checkbox" name="include" />
-        <div>Product Name</div>
-        <div>$2.99</div>
-        <div>5</div>
-        <div>$14.95</div>
-        <button class="btn-remove">
-          <i class="bx bx-trash"></i>
-        </button>
-      </div>
-      <div class="cart-item">
-        <input type="checkbox" name="include" />
-        <div>Product Name</div>
-        <div>$22.99</div>
-        <div>55</div>
-        <div>$147.95</div>
-        <button class="btn-remove">
-          <i class="bx bx-trash"></i>
-        </button>
-      </div>
-      <div class="cart-item">
-        <input type="checkbox" name="include" />
-        <div>Product Name</div>
-        <div>$222.99</div>
-        <div>5</div>
-        <div>$14.95</div>
-        <button class="btn-remove">
-          <i class="bx bx-trash"></i>
-        </button>
-      </div>
+      <% 
+        List<Cart> cart = (List<Cart>) request.getAttribute("cart");
+        for (Cart item : cart) {
+      %>
+        <div class="cart-item">
+          <input type="checkbox" name="include" />
+          <div><%= item.getProduct().getName() %></div>
+          <div>Rs. <%= item.getProduct().getPrice() %></div>
+          <div><%= item.getQuantity() %></div>
+          <div>Rs. <%= item.getProduct().getPrice() * item.getQuantity() %></div>
+          <button class="btn-remove">
+            <i class="bx bx-trash"></i>
+          </button>
+        </div>
+      <% } %>
     </main>
   </body>
 </html>

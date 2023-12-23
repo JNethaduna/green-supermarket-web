@@ -1,0 +1,26 @@
+main {
+  margin: 20px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.product {
+  margin: 10px;
+  padding: 10px;
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  max-width: 120px;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.product img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.name {
+  word-wrap: break-word;
+}

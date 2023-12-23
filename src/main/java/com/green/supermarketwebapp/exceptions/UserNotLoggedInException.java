@@ -1,4 +1,4 @@
-package com.green.supermarketwebapp.exceptions;
+package com.green.supermarketwebapp.Exceptions;
 
 public class UserNotLoggedInException extends RuntimeException {
   public UserNotLoggedInException(String message) {

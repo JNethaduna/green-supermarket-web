@@ -32,7 +32,6 @@ body {
 .input-box input {
   width: 100%;
   background: transparent;
-  outline: none;
   border: 2px solid rgb(182, 179, 179);
   border-radius: 40px;
   font-size: 16px;
