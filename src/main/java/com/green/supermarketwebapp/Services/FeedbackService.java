@@ -1,12 +1,12 @@
-package com.green.supermarketwebapp.Services;
+package com.green.supermarketwebapp.services;
 
 import java.util.List;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import com.green.supermarketwebapp.DAOs.FeedbackDAO;
-import com.green.supermarketwebapp.Models.Feedback;
+import com.green.supermarketwebapp.daos.FeedbackDAO;
+import com.green.supermarketwebapp.models.Feedback;
 
 @Service
 public class FeedbackService {

@@ -1,4 +1,4 @@
-package com.green.supermarketwebapp.Models.Keys;
+package com.green.supermarketwebapp.models.keys;
 
 import java.io.Serializable;
 import java.util.Objects;

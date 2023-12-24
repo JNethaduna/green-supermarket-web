@@ -1,5 +1,5 @@
-<%@page import="java.util.List"%> <%@page
-import="com.green.supermarketwebapp.Models.Product"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %> <%@ taglib prefix="fn"
+uri="jakarta.tags.functions" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,15 +9,15 @@ import="com.green.supermarketwebapp.Models.Product"%>
   <body>
     <jsp:include page="components/header.jsp" />
     <main>
-      <% List<Product> products = (List<Product>) request.getAttribute("products");
-          for(Product prod : products) { 
-      %>
-      <a href="#" class="product">
-        <img src="/images/products/<%= prod.getName().toLowerCase().replaceAll("\\s","") %>.jpg" alt="<%= prod.getName() %>" />
-        <p class="name"><%= prod.getName() %></p>
-        <small class="price">Rs. <%= prod.getPrice() %></small>
-      </a>
-      <% } %>
+      <c:forEach items="${products}" var="product">
+        <a href="#" class="product">
+          <img
+            src="/images/products/${fn:replace(fn:toLowerCase(product.name), ' ', '')}.jpg"
+            alt="${product.name}" />
+          <p class="name">${product.name}</p>
+          <small class="price">Rs. ${product.price}</small>
+        </a>
+      </c:forEach>
     </main>
   </body>
 </html>

@@ -1,15 +1,15 @@
-package com.green.supermarketwebapp.Services;
+package com.green.supermarketwebapp.services;
 
 import java.util.List;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import com.green.supermarketwebapp.DAOs.CartDAO;
-import com.green.supermarketwebapp.Models.Cart;
-import com.green.supermarketwebapp.Models.Customer;
-import com.green.supermarketwebapp.Models.Product;
-import com.green.supermarketwebapp.Models.Keys.CartId;
+import com.green.supermarketwebapp.daos.CartDAO;
+import com.green.supermarketwebapp.models.Cart;
+import com.green.supermarketwebapp.models.Customer;
+import com.green.supermarketwebapp.models.Product;
+import com.green.supermarketwebapp.models.keys.CartId;
 
 @Service
 public class CartService {

@@ -1,4 +1,4 @@
-package com.green.supermarketwebapp.Exceptions;
+package com.green.supermarketwebapp.exceptions;
 
 public class OrderNotFoundException extends RuntimeException {
   public OrderNotFoundException(String message) {

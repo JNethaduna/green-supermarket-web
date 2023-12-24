@@ -1,12 +1,12 @@
-package com.green.supermarketwebapp.Services;
+package com.green.supermarketwebapp.services;
 
 import java.util.NoSuchElementException;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.green.supermarketwebapp.DAOs.CustomerDAO;
-import com.green.supermarketwebapp.Models.Customer;
+import com.green.supermarketwebapp.daos.CustomerDAO;
+import com.green.supermarketwebapp.models.Customer;
 
 @Service
 public class CustomerService {

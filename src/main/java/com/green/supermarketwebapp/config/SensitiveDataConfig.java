@@ -1,4 +1,4 @@
-package com.green.supermarketwebapp.Config;
+package com.green.supermarketwebapp.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;

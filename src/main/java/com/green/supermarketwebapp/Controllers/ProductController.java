@@ -1,4 +1,4 @@
-package com.green.supermarketwebapp.Controllers;
+package com.green.supermarketwebapp.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.green.supermarketwebapp.Models.Product;
-import com.green.supermarketwebapp.Services.ProductService;
+import com.green.supermarketwebapp.models.Product;
+import com.green.supermarketwebapp.services.ProductService;
 
 import org.springframework.web.bind.annotation.PostMapping;
 

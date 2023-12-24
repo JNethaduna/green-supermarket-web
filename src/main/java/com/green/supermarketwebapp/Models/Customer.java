@@ -1,4 +1,4 @@
-package com.green.supermarketwebapp.Models;
+package com.green.supermarketwebapp.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

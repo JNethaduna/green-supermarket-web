@@ -1,4 +1,4 @@
-package com.green.supermarketwebapp.Controllers;
+package com.green.supermarketwebapp.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.green.supermarketwebapp.Services.CartService;
+import com.green.supermarketwebapp.services.CartService;
 
 @Controller
 public class CartController {

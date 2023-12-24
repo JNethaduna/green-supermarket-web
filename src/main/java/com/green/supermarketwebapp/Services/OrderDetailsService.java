@@ -1,13 +1,13 @@
-package com.green.supermarketwebapp.Services;
+package com.green.supermarketwebapp.services;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
-import com.green.supermarketwebapp.DAOs.OrderDetailsDAO;
-import com.green.supermarketwebapp.Models.Cart;
-import com.green.supermarketwebapp.Models.Order;
-import com.green.supermarketwebapp.Models.OrderDetails;
+import com.green.supermarketwebapp.daos.OrderDetailsDAO;
+import com.green.supermarketwebapp.models.Cart;
+import com.green.supermarketwebapp.models.Order;
+import com.green.supermarketwebapp.models.OrderDetails;
 
 @Service
 public class OrderDetailsService {

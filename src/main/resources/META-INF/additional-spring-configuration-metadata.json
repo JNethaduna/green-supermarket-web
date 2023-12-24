@@ -1,0 +1,19 @@
+{
+  "properties": [
+    {
+      "name": "paypal.baseUrl",
+      "type": "java.lang.String",
+      "description": "The base URL for the PayPal API."
+    },
+    {
+      "name": "paypal.clientId",
+      "type": "java.lang.String",
+      "description": "The client ID for the PayPal API."
+    },
+    {
+      "name": "paypal.secret",
+      "type": "java.lang.String",
+      "description": "The secret for the PayPal API."
+    }
+  ]
+}

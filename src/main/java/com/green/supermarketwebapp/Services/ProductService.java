@@ -1,13 +1,13 @@
-package com.green.supermarketwebapp.Services;
+package com.green.supermarketwebapp.services;
 
 import java.util.List;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import com.green.supermarketwebapp.DAOs.ProductDAO;
-import com.green.supermarketwebapp.Exceptions.ProductNotFoundException;
-import com.green.supermarketwebapp.Models.Product;
+import com.green.supermarketwebapp.daos.ProductDAO;
+import com.green.supermarketwebapp.exceptions.ProductNotFoundException;
+import com.green.supermarketwebapp.models.Product;
 
 @Service
 public class ProductService {

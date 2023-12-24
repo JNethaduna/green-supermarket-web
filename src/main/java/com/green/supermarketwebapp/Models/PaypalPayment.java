@@ -1,4 +1,4 @@
-package com.green.supermarketwebapp.Models;
+package com.green.supermarketwebapp.models;
 
 public class PaypalPayment extends Payment {
   private String paypalPaymentId;

@@ -1,4 +1,4 @@
-package com.green.supermarketwebapp.Controllers;
+package com.green.supermarketwebapp.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

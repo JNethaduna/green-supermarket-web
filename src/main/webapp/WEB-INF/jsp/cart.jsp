@@ -1,5 +1,5 @@
-<%@page import="java.util.List"%> <%@page
-import="com.green.supermarketwebapp.Models.Cart"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %> <%@ taglib prefix="fn"
+uri="jakarta.tags.functions" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,21 +12,18 @@ import="com.green.supermarketwebapp.Models.Cart"%>
   <body>
     <jsp:include page="components/header.jsp" />
     <main>
-      <% 
-        List<Cart> cart = (List<Cart>) request.getAttribute("cart");
-        for (Cart item : cart) {
-      %>
+      <c:forEach items="${cart}" var="item">
         <div class="cart-item">
           <input type="checkbox" name="include" />
-          <div><%= item.getProduct().getName() %></div>
-          <div>Rs. <%= item.getProduct().getPrice() %></div>
-          <div><%= item.getQuantity() %></div>
-          <div>Rs. <%= item.getProduct().getPrice() * item.getQuantity() %></div>
+          <div>${item.product.name}</div>
+          <div>Rs. ${item.product.price}</div>
+          <div>${item.quantity}</div>
+          <div>Rs. ${item.product.price * item.quantity}</div>
           <button class="btn-remove">
             <i class="bx bx-trash"></i>
           </button>
         </div>
-      <% } %>
+      </c:forEach>
     </main>
   </body>
 </html>

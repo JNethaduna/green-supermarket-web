@@ -1,4 +1,4 @@
-package com.green.supermarketwebapp.Config;
+package com.green.supermarketwebapp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import com.green.supermarketwebapp.Services.UserDetailsServiceImpl;
+import com.green.supermarketwebapp.services.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity

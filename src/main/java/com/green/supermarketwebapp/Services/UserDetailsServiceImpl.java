@@ -1,4 +1,4 @@
-package com.green.supermarketwebapp.Services;
+package com.green.supermarketwebapp.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,10 +11,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.green.supermarketwebapp.DAOs.CustomerDAO;
-import com.green.supermarketwebapp.DAOs.ManagerDAO;
-import com.green.supermarketwebapp.Models.Customer;
-import com.green.supermarketwebapp.Models.Manager;
+import com.green.supermarketwebapp.daos.CustomerDAO;
+import com.green.supermarketwebapp.daos.ManagerDAO;
+import com.green.supermarketwebapp.models.Customer;
+import com.green.supermarketwebapp.models.Manager;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

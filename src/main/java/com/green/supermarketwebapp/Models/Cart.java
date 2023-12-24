@@ -1,6 +1,6 @@
-package com.green.supermarketwebapp.Models;
+package com.green.supermarketwebapp.models;
 
-import com.green.supermarketwebapp.Models.Keys.CartId;
+import com.green.supermarketwebapp.models.keys.CartId;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
