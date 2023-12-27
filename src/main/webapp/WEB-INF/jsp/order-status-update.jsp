@@ -75,7 +75,7 @@
         <h2>Update Order Status</h2>
 
         <form action="update_status.php" method="post">
-            <label for="orderNumber">Order Number:</label>
+            <label for="orderNumber">Order ID:</label>
             <input type="text" id="orderNumber" name="orderNumber" required>
 
             <label for="newStatus">New Status:</label>
