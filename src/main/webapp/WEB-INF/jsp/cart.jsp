@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Online Supermarket Checkout</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <style>
     :root {
       --primary-color: hsl(130, 45%, 57%);
@@ -83,7 +83,10 @@
     th, td {
       padding: 10px;
       border: 0px solid var(--tertiary-color);
-      text-align: center; 
+      text-align: center;
+      align-content: center;
+      
+
     }
 
     .product-image img {
@@ -109,7 +112,7 @@
       cursor: pointer;
       font-size: 15px;
 
-      width: 100%;
+      width: 90%;
       max-width: 200px;
 
       margin: 0;
@@ -120,12 +123,24 @@
       transition: background-color 0.3s ease;
 
     }
+    .trash-button {
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      align-content: center;
+      cursor: pointer;
+      font-size: 15px;
 
-    .paypal-button:hover {
-      background-color: #005aa0;
+      max-width: 200px;
+
+      margin: 0;
+
+      display: block;
+      transition: background-color 0.3s ease;
+
     }
-
-
     .total-section {
       display: flex;
     }
@@ -154,51 +169,55 @@
           <tr>
             <th></th>
             <th>Name</th>
+            <th>Unit Price</th>
             <th>Quantity</th>
             <th>Price</th>
+            <th><!--Trash Button--></th>
           </tr>
           <tr>
             <td class="product-image"><img src="almondmilk.jpg" alt="Almond Milk"></td>
             <td>Almond Milk</td>
+            <td>$10.00</td>
             <td>2</td>
             <td>$20.00</td>
+            <td><button type="submit" class="trash-button"><i class="bx bx-trash"></i></button></td>
           </tr>
           <tr>
             <td class="product-image"><img src="aluminiumfoil.jpg" alt="Aluminium Foil"></td>
             <td>Aluminium Foil</td>
+            <td>$20.00</td>
             <td>2</td>
             <td>$40.00</td>
+            <td><button type="submit" class="trash-button"><i class="bx bx-trash"></i></button></td>
           </tr>
           <tr>
             <td class="product-image"><img src="apple.jpg" alt="Apple"></td>
             <td>Apple</td>
+            <td>$20.00</td>
             <td>10</td>
-            <td>$201.00</td>
+            <td>$200.00</td>
+            <td><button type="submit" class="trash-button"><i class="bx bx-trash"></i></button></td>
           </tr>
           <tr>
             <td class="product-image"><img src="applejuice.jpg" alt="Apple"></td>
             <td>Apple Juice</td>
+            <td>$5.00</td>
             <td>3</td>
             <td>$15.00</td>
+            <td><button type="submit" class="trash-button"><i class="bx bx-trash"></i></button></td>
           </tr>
         </table>
       </div>
     </div>
 
     <div class="right-column">
-        <h2>Total Amount</h2>
+        <h2>Amount</h2>
         <div class="total-section">
           <div class="total-words">
             <p>Subtotal:</p>
-            <p>Shipping:</p>
-            <p>Taxes:</p>
-            <p>Total:</p>
           </div>
           <div class="total-amounts">
             <p>$50.00</p>
-            <p>$5.00</p>
-            <p>$4.50</p>
-            <p>$59.50</p>
           </div>
         </div>
       <div class="paypal-button-container">
