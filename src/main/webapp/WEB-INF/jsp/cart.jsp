@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <jsp:include page="components/meta.jsp" />
-    <link rel="stylesheet" href="/css/cart.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet" />
-    <style>
-      :root {
-        --primary-color: hsl(130, 45%, 57%);
-        --secondary-color: hsl(0, 0%, 100%);
-        --tertiary-color: hsl(0, 0%, 92%);
-        --text-color: hsl(0, 0%, 6%);
-      }
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Supermarket Checkout</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: hsl(130, 45%, 57%);
+      --secondary-color: hsl(0, 0%, 100%);
+      --tertiary-color: hsl(0, 0%, 92%);
+      --text-color: hsl(0, 0%, 6%);
+    }
 
       body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -80,16 +80,15 @@
         margin-top: 10px;
       }
 
-      th,
-      td {
-        padding: 10px;
-        border: 0px solid var(--tertiary-color);
-        text-align: center;
-      }
+    th, td {
+      padding: 10px;
+      border: 0px solid var(--tertiary-color);
+      text-align: center; 
+    }
 
-      .product-image img {
-        width: 80px;
-        border-radius: 8px;
+    .product-image img {
+      width: 80px; 
+      border-radius: 8px;
 
         overflow: hidden;
         display: block;
@@ -110,10 +109,11 @@
         cursor: pointer;
         font-size: 15px;
 
-        width: 100%;
-        max-width: 200px;
+      width: 90%;
+      max-width: 200px;
 
-        margin: 0;
+      width: 90%;
+      max-width: 200px;
 
         display: block;
         margin-top: 20px;
@@ -125,84 +125,95 @@
         background-color: #005aa0;
       }
 
-      .total-section {
-        display: flex;
-      }
+    }
+    .trash-button {
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      align-content: center;
+      cursor: pointer;
+      font-size: 15px;
 
-      .total-words {
-        width: 100px;
-        font-weight: bold;
-      }
+      max-width: 200px;
 
-      .total-words p,
-      .total-amounts p {
-        margin: 10px 100;
-      }
-    </style>
-  </head>
-  <body>
-    <jsp:include page="components/header.jsp" />
-    <section class="checkout-section">
-      <div class="left-column">
-        <h2>Items in Cart</h2>
-        <div class="items-section">
-          <table>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Quantity</th>
-              <th>Price</th>
-            </tr>
-            <c:forEach items="${cart}" var="item">
-              <div class="cart-item">
-                <input type="checkbox" name="include" />
-                <div>${item.product.name}</div>
-                <div>Rs. ${item.product.price}</div>
-                <div>${item.quantity}</div>
-                <div>Rs. ${item.product.price * item.quantity}</div>
-              </div>
-            </c:forEach>
-            <tr>
-              <td class="product-image">
-                <img src="almondmilk.jpg" alt="Almond Milk" />
-              </td>
-              <td>${item.product.name}</td>
-              <td>${item.quantity}</td>
-              <td>Rs. ${item.product.price * item.quantity}</td>
-              <td>
-                <button class="btn-remove">
-                  <i class="bx bx-trash"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="product-image">
-                <img src="aluminiumfoil.jpg" alt="Aluminium Foil" />
-              </td>
-              <td>Aluminium Foil</td>
-              <td>2</td>
-              <td>$40.00</td>
-            </tr>
-            <tr>
-              <td class="product-image"><img src="apple.jpg" alt="Apple" /></td>
-              <td>Apple</td>
-              <td>10</td>
-              <td>$201.00</td>
-            </tr>
-            <tr>
-              <td class="product-image">
-                <img src="applejuice.jpg" alt="Apple" />
-              </td>
-              <td>Apple Juice</td>
-              <td>3</td>
-              <td>$15.00</td>
-            </tr>
-          </table>
-        </div>
+      margin: 0;
+
+      display: block;
+      transition: background-color 0.3s ease;
+
+    }
+    .total-section {
+      display: flex;
+    }
+
+    .total-words {
+      width: 100px;
+      font-weight: bold;
+    }
+
+    .total-words p,
+    .total-amounts p {
+      margin: 10px 100;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Green Supermarket</h1>
+  </header>
+  <section class="checkout-section">
+    <div class="left-column">
+      <h2>Items in Cart</h2>
+      <div class="items-section">
+        <table>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th><!--Trash Button--></th>
+          </tr>
+          <tr>
+            <td class="product-image"><img src="almondmilk.jpg" alt="Almond Milk"></td>
+            <td>Almond Milk</td>
+            <td>$10.00</td>
+            <td>2</td>
+            <td>$20.00</td>
+            <td><button type="submit" class="trash-button"><i class="bx bx-trash"></i></button></td>
+          </tr>
+          <tr>
+            <td class="product-image"><img src="aluminiumfoil.jpg" alt="Aluminium Foil"></td>
+            <td>Aluminium Foil</td>
+            <td>$20.00</td>
+            <td>2</td>
+            <td>$40.00</td>
+            <td><button type="submit" class="trash-button"><i class="bx bx-trash"></i></button></td>
+          </tr>
+          <tr>
+            <td class="product-image"><img src="apple.jpg" alt="Apple"></td>
+            <td>Apple</td>
+            <td>$20.00</td>
+            <td>10</td>
+            <td>$200.00</td>
+            <td><button type="submit" class="trash-button"><i class="bx bx-trash"></i></button></td>
+          </tr>
+          <tr>
+            <td class="product-image"><img src="applejuice.jpg" alt="Apple"></td>
+            <td>Apple Juice</td>
+            <td>$5.00</td>
+            <td>3</td>
+            <td>$15.00</td>
+            <td><button type="submit" class="trash-button"><i class="bx bx-trash"></i></button></td>
+          </tr>
+        </table>
       </div>
 
-      <div class="right-column">
-        <h2>Total Amount</h2>
+    <div class="right-column">
+        <h2>Amount</h2>
         <div class="total-section">
           <div class="total-words">
             <p>Subtotal:</p>
