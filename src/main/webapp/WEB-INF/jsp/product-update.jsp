@@ -56,8 +56,8 @@
     </style>
   </head>
   <body>
+    <jsp:include page="components/header-manager.jsp" />
     <h1>Update Product Details</h1>
-
     <form id="productForm" action="/manage/product/update" method="post">
       <label for="ID">Product ID:</label>
       <input type="text" id="ID" name="id" required />

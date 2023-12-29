@@ -96,6 +96,7 @@ uri="jakarta.tags.functions" %>
     </style>
   </head>
   <body>
+    <jsp:include page="components/header-manager.jsp" />
     <div class="container">
       <h1>Orders</h1>
       <c:forEach item="${orders}" var="order">

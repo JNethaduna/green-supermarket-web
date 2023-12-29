@@ -59,6 +59,7 @@
     </style>
   </head>
   <body>
+    <jsp:include page="components/header-manager.jsp" />
     <form action="/manage/product/add" method="post">
       <h2>Add Product</h2>
 

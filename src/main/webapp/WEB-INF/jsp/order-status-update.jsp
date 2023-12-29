@@ -63,6 +63,7 @@
     </style>
   </head>
   <body>
+    <jsp:include page="components/header-manager.jsp" />
     <div class="container">
       <h2>Update Order Status</h2>
       <form>

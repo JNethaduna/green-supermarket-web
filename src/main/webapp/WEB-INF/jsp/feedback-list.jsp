@@ -9,6 +9,7 @@ uri="jakarta.tags.functions" %>
   <body>
     <jsp:include page="components/header.jsp" />
     <main>
+      <jsp:include page="components/header-manager.jsp" />
       <c:forEach items="${feedbacks}" var="feedback">
         <div class="feedback">
           <p>${feedback.feedback}</p>

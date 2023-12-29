@@ -62,7 +62,7 @@
   <body>
     <jsp:include page="components/header.jsp" />
     <section>
-      <h2>Welcome Adeesha!</h2>
+      <h2>Welcome ${customer.fName} ${customer.lName}!</h2>
 
       <p>
         <strong>Address:</strong>
