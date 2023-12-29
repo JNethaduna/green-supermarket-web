@@ -13,7 +13,7 @@
     }
 
     header, footer {
-      background-color: #4CAF50; /* Blue color */
+      background-color: #4CAF50; 
       color: white;
       text-align: left;
       padding: 20px;
@@ -21,18 +21,18 @@
 
     main {
       padding: 20px;
-      text-align: left; /* Center the text in the main content */
+      text-align: left; 
     }
 
     .footer-content {
       display: flex;
-      flex-direction: row; /* Display sections as columns */
-      margin: 0 auto; /* Horizontally center the content */
+      flex-direction: row; 
+      margin: 0 auto; 
     }
 
     .footer-section {
       width: 80%;
-      margin-right: 20px; /* Add spacing between columns */
+      margin-right: 20px; 
       margin-bottom: 20px;
       padding: 20px;
       border-radius: 8px;
@@ -40,7 +40,7 @@
     }
 
     .footer-section:last-child {
-      margin-right: 0; /* Remove margin from the last column */
+      margin-right: 0; 
     }
 
     .footer-section:hover {
@@ -48,7 +48,7 @@
     }
 
     h3 {
-      color: white; /* Blue color */
+      color: white; 
     }
 
     ul {
@@ -62,13 +62,13 @@
 
     a {
       text-decoration: none;
-      color: white; /* Blue color */
+      color: white; 
       font-weight: bold;
       transition: color 0.3s ease;
     }
 
     a:hover {
-      color: white; /* Lighter blue color on hover */
+      color: white; 
     }
 
     .footer-bottom {
@@ -85,12 +85,12 @@
     .social-icons a {
       margin: 0 10px;
       font-size: 20px;
-      color: white; /* Blue color */
+      color: white; 
       transition: color 0.3s ease;
     }
 
     .social-icons a:hover {
-      color: white; /* Lighter blue color on hover */
+      color: white; 
     }
 
     .footer-description {
