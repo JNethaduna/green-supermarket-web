@@ -17,6 +17,7 @@ public class Product {
   private String description;
   private String category;
   private double price;
+  private int stock;
 
   // Setters
   public void setId(Long id) {
@@ -39,6 +40,10 @@ public class Product {
     this.price = price;
   }
 
+  public void setStock(int stock) {
+    this.stock = stock;
+  }
+
   // Getters
   public Long getId() {
     return id;
@@ -58,5 +63,9 @@ public class Product {
 
   public double getPrice() {
     return price;
+  }
+
+  public int getStock() {
+    return stock;
   }
 }
