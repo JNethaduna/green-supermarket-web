@@ -1,32 +1,18 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %> <%@ taglib prefix="fn"
+uri="jakarta.tags.functions" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Online Supermarket Checkout</title>
+    <jsp:include page="components/meta.jsp" />
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet" />
     <style>
-      :root {
-        --primary-color: hsl(130, 45%, 57%);
-        --secondary-color: hsl(0, 0%, 100%);
-        --tertiary-color: hsl(0, 0%, 92%);
-        --text-color: hsl(0, 0%, 6%);
-      }
-
       body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background-color: var(--tertiary-color);
         margin: 0;
         padding: 0;
-      }
-
-      header {
-        background-color: var(--primary-color);
-        color: var(--secondary-color);
-        padding: 1em;
-        text-align: center;
       }
 
       .checkout-section {
@@ -156,9 +142,7 @@
   </head>
 
   <body>
-    <header>
-      <h1>Green Supermarket</h1>
-    </header>
+    <jsp:include page="components/header.jsp" />
     <section class="checkout-section">
       <div class="left-column">
         <h2>Items in Cart</h2>
@@ -172,64 +156,25 @@
               <th>Price</th>
               <th><!--Trash Button--></th>
             </tr>
-            <tr>
-              <td class="product-image">
-                <img src="almondmilk.jpg" alt="Almond Milk" />
-              </td>
-              <td>Almond Milk</td>
-              <td>$10.00</td>
-              <td>2</td>
-              <td>$20.00</td>
-              <td>
-                <button type="submit" class="trash-button">
-                  <i class="bx bx-trash"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="product-image">
-                <img src="aluminiumfoil.jpg" alt="Aluminium Foil" />
-              </td>
-              <td>Aluminium Foil</td>
-              <td>$20.00</td>
-              <td>2</td>
-              <td>$40.00</td>
-              <td>
-                <button type="submit" class="trash-button">
-                  <i class="bx bx-trash"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="product-image"><img src="apple.jpg" alt="Apple" /></td>
-              <td>Apple</td>
-              <td>$20.00</td>
-              <td>10</td>
-              <td>$200.00</td>
-              <td>
-                <button type="submit" class="trash-button">
-                  <i class="bx bx-trash"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="product-image">
-                <img src="applejuice.jpg" alt="Apple" />
-              </td>
-              <td>Apple Juice</td>
-              <td>$5.00</td>
-              <td>3</td>
-              <td>$15.00</td>
-              <td>
-                <button type="submit" class="trash-button">
-                  <i class="bx bx-trash"></i>
-                </button>
-              </td>
-            </tr>
+            <c:forEach items="${cart}" var="item">
+              <tr>
+                <td class="product-image">
+                  <img src="almondmilk.jpg" alt="Almond Milk" />
+                </td>
+                <td>${item.product.name}</td>
+                <td>LKR ${item.product.price}</td>
+                <td>${item.quantity}</td>
+                <td>LKR ${item.product.price * item.quantity}</td>
+                <td>
+                  <button type="submit" class="trash-button">
+                    <i class="bx bx-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            </c:forEach>
           </table>
         </div>
       </div>
-
       <div class="right-column">
         <h2>Amount</h2>
         <div class="total-section">
@@ -237,7 +182,13 @@
             <p>Subtotal:</p>
           </div>
           <div class="total-amounts">
-            <p>$50.00</p>
+            <c:set var="totalCost" value="0" />
+            <c:forEach items="${cart}" var="item">
+              <c:set
+                var="totalCost"
+                value="${totalCost + (item.product.price * item.quantity)}" />
+            </c:forEach>
+            <p>LKR <c:out value="${totalCost}" /></p>
           </div>
         </div>
         <div class="paypal-button-container">
@@ -245,5 +196,28 @@
         </div>
       </div>
     </section>
+    <jsp:include page="components/footer.jsp" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('form').submit(function (event) {
+          event.preventDefault();
+          var productId = $(this).find("input[name='id']").val();
+          $.ajax({
+            url: '/user/cart/remove',
+            type: 'POST',
+            data: {
+              id: productId,
+            },
+            success: function (response) {
+              location.reload();
+            },
+            error: function (error) {
+              alert('Error removing product from cart! Please try again.');
+            },
+          });
+        });
+      });
+    </script>
   </body>
 </html>
