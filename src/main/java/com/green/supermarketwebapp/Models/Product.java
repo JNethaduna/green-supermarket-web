@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Version;
 
 @Entity
 public class Product {
@@ -17,6 +18,8 @@ public class Product {
   private String description;
   private String category;
   private double price;
+
+  @Version
   private int stock;
 
   // Setters

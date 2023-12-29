@@ -14,12 +14,11 @@ import com.green.supermarketwebapp.config.PaypalConfig;
 @Service
 public class PaypalPaymentService {
   private final PaypalConfig paypalConfig;
-  private final Helpers helpers;
+
   private HttpClient client = HttpClient.newHttpClient();
 
-  public PaypalPaymentService(PaypalConfig paypalConfig, Helpers helpers) {
+  public PaypalPaymentService(PaypalConfig paypalConfig) {
     this.paypalConfig = paypalConfig;
-    this.helpers = helpers;
   }
 
   public String createOrder(String orderJson, String accessToken) throws Exception {
@@ -50,14 +49,14 @@ public class PaypalPaymentService {
         "  \"purchase_units\": [" +
         "    {" +
         "      \"amount\": {" +
-        "        \"currency_code\": \"LKR\"," +
+        "        \"currency_code\": \"USD\"," +
         "        \"value\": \"" + price + "\"" +
         "      }" +
         "    }" +
-        "  ]" +
+        "  ]," +
         "  \"application_context\": {" +
-        "    \"return_url\": \"http://localhost:8080/payment/complete\"," +
-        "    \"cancel_url\": \"http://localhost:8080/payment/canceled\"" +
+        "    \"return_url\": \"http://localhost:8080/payment/paypal/complete\"," +
+        "    \"cancel_url\": \"http://localhost:8080/payment/paypal/canceled\"" +
         "  }" +
         "}";
   }
@@ -74,12 +73,11 @@ public class PaypalPaymentService {
         .build();
 
     HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-    return helpers.parseJson(response.body()).getString("access_token");
+    return Helpers.parseJson(response.body()).getString("access_token");
   }
 
   public String getApproveLink(String order) throws Exception {
-    JSONArray links = helpers.parseJson(order).getJSONArray("links");
+    JSONArray links = Helpers.parseJson(order).getJSONArray("links");
     for (int i = 0; i < links.length(); i++) {
       if (links.getJSONObject(i).getString("rel").equals("approve")) {
         return links.getJSONObject(i).getString("href");
@@ -92,7 +90,7 @@ public class PaypalPaymentService {
   // capture.
   // If there is a possibility for multiple, please adjust the code accordingly.
   public String getPaymentId(String response) throws Exception {
-    return helpers.parseJson(response)
+    return Helpers.parseJson(response)
         .getJSONArray("purchase_units")
         .getJSONObject(0) // First purchase unit
         .getJSONObject("payments")
@@ -102,7 +100,7 @@ public class PaypalPaymentService {
   }
 
   public double getAmount(String response) throws Exception {
-    String value = helpers.parseJson(response)
+    String value = Helpers.parseJson(response)
         .getJSONArray("purchase_units")
         .getJSONObject(0) // First purchase unit
         .getJSONObject("payments")
@@ -115,7 +113,7 @@ public class PaypalPaymentService {
   }
 
   public String getPayerId(String response) throws Exception {
-    return helpers.parseJson(response)
+    return Helpers.parseJson(response)
         .getJSONObject("payer")
         .getString("payer_id");
   }

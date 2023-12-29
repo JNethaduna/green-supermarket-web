@@ -2,10 +2,13 @@ package com.green.supermarketwebapp.services;
 
 import java.util.List;
 
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.green.supermarketwebapp.daos.OrderDAO;
+import com.green.supermarketwebapp.exceptions.InsufficientStockException;
 import com.green.supermarketwebapp.exceptions.OrderNotFoundException;
 import com.green.supermarketwebapp.models.Cart;
 import com.green.supermarketwebapp.models.Customer;
@@ -20,6 +23,8 @@ public class OrderService {
   private final PaymentService paymentService;
   private final OrderDetailsService orderDetailsService;
   private final MailService mailService;
+  private final ProductService productService;
+  private final StockLockService stockLockService;
 
   public OrderService(
       OrderDAO orderRepository,
@@ -27,13 +32,17 @@ public class OrderService {
       CartService cartService,
       PaymentService paymentService,
       OrderDetailsService orderDetailsService,
-      MailService mailService) {
+      MailService mailService,
+      ProductService productService,
+      StockLockService stockLockService) {
     this.orderRepository = orderRepository;
     this.userContextService = userContextService;
     this.cartService = cartService;
     this.paymentService = paymentService;
     this.orderDetailsService = orderDetailsService;
     this.mailService = mailService;
+    this.productService = productService;
+    this.stockLockService = stockLockService;
   }
 
   public Order getOrder(Long id) {
@@ -50,6 +59,11 @@ public class OrderService {
     }
   }
 
+  public List<Order> getOrderList(String status, int page, int size) {
+    return orderRepository.findByStatus(status, PageRequest.of(page, size)).getContent();
+  }
+
+  @Transactional
   public Order placeOrder(String paymentId, String payerId, double amount) {
     Customer customer = userContextService.getCurrentCustomer();
 
@@ -65,10 +79,20 @@ public class OrderService {
     // Creating order details for the order from the selected cart items
     List<Cart> selectedItems = cartService.getSelected(customer);
     List<OrderDetails> orderDetails = orderDetailsService.createOrderDetails(selectedItems, order);
-    orderDetailsService.saveOrderDetails(orderDetails);
+    order.setOrderDetails(orderDetails);
+
+    order = orderRepository.save(order);
 
     // Deleting the selected cart items
-    cartService.removeAllFromCart(selectedItems);
+    for (Cart item : selectedItems) {
+      cartService.removeFromCart(item.getProduct().getId());
+    }
+
+    // Cleaning up stock locks and decreasing main stock
+    for (Cart item : selectedItems) {
+      productService.decreaseStock(item.getProduct().getId(), item.getQuantity());
+    }
+    stockLockService.deleteCustomerStockLocks(customer);
 
     // Sending the order confirmation email
     mailService.sendMail(userContextService.getCurrentUserEmail(), "Order Confirmation",
@@ -86,5 +110,29 @@ public class OrderService {
         "Your order status has been updated to " + status + ".");
 
     return order;
+  }
+
+  @Transactional
+  public void beginCheckout() {
+    int attempts = 0;
+    while (attempts < 3) {
+      try {
+        Customer customer = userContextService.getCurrentCustomer();
+        List<Cart> selectedItems = cartService.getSelected(customer);
+        for (Cart item : selectedItems) {
+          Integer stock = productService.checkAvailableStock(item.getProduct().getId());
+          if (stock < item.getQuantity()) {
+            throw new InsufficientStockException("Not enough stock available for " + item.getProduct().getName());
+          }
+          stockLockService.createStockLock(customer, item.getProduct(), item.getQuantity());
+        }
+        break;
+      } catch (OptimisticLockingFailureException e) {
+        if (++attempts >= 3) {
+          throw e;
+        }
+      }
+    }
+
   }
 }

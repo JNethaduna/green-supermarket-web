@@ -1,5 +1,6 @@
 package com.green.supermarketwebapp.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +16,10 @@ public class Customer {
 
   private String fName;
   private String lName;
+
+  @Column(unique = true)
   private String email;
+
   private String password;
   private String address;
   private String phone;

@@ -10,4 +10,6 @@ public interface OrderDAO extends JpaRepository<Order, Long> {
   Page<Order> findByCustomer_IdAndStatus(Long customerId, String status, Pageable pageable);
 
   Page<Order> findByCustomer_Id(Long customerId, Pageable pageable);
+
+  Page<Order> findByStatus(String status, Pageable pageable);
 }

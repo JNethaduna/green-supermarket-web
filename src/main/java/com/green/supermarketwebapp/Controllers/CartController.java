@@ -1,5 +1,6 @@
 package com.green.supermarketwebapp.controllers;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,12 +24,23 @@ public class CartController {
   }
 
   @PostMapping("/user/cart/add")
-  public void addToCart(@RequestParam("id") Long productId, @RequestParam int quantity) {
-    cartService.addToCart(productId, quantity);
+  public ResponseEntity<String> addToCart(@RequestParam("id") Long productId, @RequestParam int quantity) {
+    try {
+      cartService.addToCart(productId, quantity);
+      return ResponseEntity.ok("Product added to cart successfully");
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
   }
 
   @PostMapping("/user/cart/remove")
-  public void removeFromCart(@RequestParam("id") Long productId) {
-    cartService.removeFromCart(productId);
+  public ResponseEntity<String> removeFromCart(@RequestParam("id") Long productId) {
+    try {
+      cartService.removeFromCart(productId);
+      return ResponseEntity.ok("Product removed from cart successfully");
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().body(e.getMessage());
+    }
   }
 }

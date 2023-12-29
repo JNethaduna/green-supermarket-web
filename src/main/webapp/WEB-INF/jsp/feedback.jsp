@@ -15,5 +15,6 @@
         <button type="submit">Submit</button>
       </form>
     </main>
+    <jsp:include page="components/footer.jsp" />
   </body>
 </html>

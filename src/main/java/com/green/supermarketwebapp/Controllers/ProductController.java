@@ -59,20 +59,28 @@ public class ProductController {
 
   @GetMapping("/manage/product/add")
   public String addProduct() {
-    return "manage-product";
+    return "product-add";
   }
 
   @PostMapping("/manage/product/add")
   public String addProduct(@ModelAttribute Product product) {
-    Long newProductId = productService.createProduct(product);
-    return "redirect:/product/" + newProductId;
+    try {
+      Long newProductId = productService.saveProduct(product);
+      return "redirect:/product/" + newProductId;
+    } catch (IllegalArgumentException e) {
+      return "redirect:/manage/product/add?error";
+    }
   }
 
   @PostMapping("/manage/product/update/{id}")
   public String updateProduct(@PathVariable Long id, @ModelAttribute Product product) {
     product.setId(id);
-    productService.updateProduct(product);
-    return "redirect:/product/" + id;
+    try {
+      productService.saveProduct(product);
+      return "redirect:/product/" + id;
+    } catch (IllegalArgumentException e) {
+      return "redirect:/manage/product/update/" + id + "?error";
+    }
   }
 
   @PostMapping("/manage/product/delete/{id}")

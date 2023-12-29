@@ -1,8 +1,13 @@
 main {
   margin: 20px 30px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 10px 0;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
 }
 
 .product {

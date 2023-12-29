@@ -1,5 +1,8 @@
 package com.green.supermarketwebapp.models;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class PaypalPayment extends Payment {
   private String paypalPaymentId;
   private String paypalPayerId;

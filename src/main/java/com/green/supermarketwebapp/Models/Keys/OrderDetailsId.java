@@ -43,6 +43,6 @@ public class OrderDetailsId implements Serializable {
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(order, product);
+    return Objects.hash(order, product);
   }
 }

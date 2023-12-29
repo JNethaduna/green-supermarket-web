@@ -1,13 +1,16 @@
 package com.green.supermarketwebapp.models;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.SequenceGenerator;
@@ -22,13 +25,18 @@ public class Order {
   private Long id;
 
   @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "payment_id", unique = true)
   private Payment payment;
 
   @ManyToOne
+  @JoinColumn(name = "customer_id")
   private Customer customer;
 
   private Timestamp placedAt;
   private String status;
+
+  @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+  private List<OrderDetails> orderDetails;
 
   @PrePersist
   protected void onCreate() {
@@ -46,6 +54,10 @@ public class Order {
 
   public void setStatus(String status) {
     this.status = status;
+  }
+
+  public void setOrderDetails(List<OrderDetails> orderDetails) {
+    this.orderDetails = orderDetails;
   }
 
   // Getters
@@ -67,5 +79,9 @@ public class Order {
 
   public String getStatus() {
     return status;
+  }
+
+  public List<OrderDetails> getOrderDetails() {
+    return orderDetails;
   }
 }

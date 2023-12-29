@@ -1,5 +1,7 @@
 package com.green.supermarketwebapp.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.green.supermarketwebapp.daos.StockLockDAO;
@@ -20,7 +22,16 @@ public class StockLockService {
     stockLockDAO.save(stockLock);
   }
 
+  public Integer getLockedProductStock(Long productId) {
+    List<StockLock> stockLocks = stockLockDAO.findByProductId(productId);
+    return stockLocks.stream().mapToInt(StockLock::getQuantity).sum();
+  }
+
   public void deleteStockLock(StockLock stockLock) {
     stockLockDAO.delete(stockLock);
+  }
+
+  public void deleteCustomerStockLocks(Customer customer) {
+    stockLockDAO.deleteByCustomerId(customer.getId());
   }
 }

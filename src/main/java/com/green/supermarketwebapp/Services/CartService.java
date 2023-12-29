@@ -1,9 +1,11 @@
 package com.green.supermarketwebapp.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.green.supermarketwebapp.daos.CartDAO;
 import com.green.supermarketwebapp.models.Cart;
@@ -32,10 +34,20 @@ public class CartService {
   public void addToCart(Long productId, int quantity) {
     Customer customer = userContextService.getCurrentCustomer();
     Product product = productService.getProduct(productId); // throws ProductNotFoundException
-    Cart cart = new Cart(customer, product, quantity);
-    cartRepository.save(cart);
+    CartId cartId = new CartId(customer.getId(), product.getId());
+    Optional<Cart> optionalCart = cartRepository.findById(cartId);
+
+    if (optionalCart.isPresent()) {
+      Cart cart = optionalCart.get();
+      cart.setQuantity(cart.getQuantity() + quantity); // increment the quantity
+      cartRepository.save(cart);
+    } else {
+      Cart cart = new Cart(customer, product, quantity);
+      cartRepository.save(cart);
+    }
   }
 
+  @Transactional
   public void removeFromCart(Long productId) {
     Customer customer = userContextService.getCurrentCustomer();
     Product product = productService.getProduct(productId); // throws ProductNotFoundException
@@ -43,12 +55,8 @@ public class CartService {
     cartRepository.deleteById(cartId);
   }
 
-  public void removeAllFromCart(List<Cart> cartItems) {
-    cartRepository.deleteAll(cartItems);
-  }
-
   public List<Cart> getSelected(Customer customer) {
-    return cartRepository.findByCustomer_IdAndSelected(customer.getId(), true);
+    return cartRepository.findByCustomer_IdAndSelected(customer.getId(), false);
   }
 
   public double getTotal() {

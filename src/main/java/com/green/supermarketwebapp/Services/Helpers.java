@@ -1,11 +1,17 @@
 package com.green.supermarketwebapp.services;
 
-import org.json.JSONObject;
-import org.springframework.stereotype.Service;
+import java.util.stream.Stream;
 
-@Service
+import org.json.JSONObject;
+
 public class Helpers {
-  public JSONObject parseJson(String json) {
+  public static JSONObject parseJson(String json) {
     return new JSONObject(json);
+  }
+
+  public static String formatCategory(String category) {
+    return Stream.of(category.split("-"))
+        .map(word -> word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase())
+        .reduce("", (acc, word) -> acc + word + " ").trim();
   }
 }

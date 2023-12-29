@@ -1,5 +1,6 @@
 package com.green.supermarketwebapp.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,7 +14,9 @@ public class Manager {
   @SequenceGenerator(name = "manager_seq", sequenceName = "manager_seq", allocationSize = 1, initialValue = 100)
   private Long id;
 
+  @Column(unique = true)
   private String email;
+
   private String password;
 
   // Setters
