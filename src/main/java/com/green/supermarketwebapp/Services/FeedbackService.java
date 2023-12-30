@@ -18,8 +18,10 @@ public class FeedbackService {
     this.userContextService = userContextService;
   }
 
-  public Feedback saveFeedback(Feedback feedback) {
+  public Feedback saveFeedback(String body) {
+    Feedback feedback = new Feedback();
     feedback.setCustomer(userContextService.getCurrentCustomer());
+    feedback.setFeedback(body);
     return feedbackRepository.save(feedback);
   }
 

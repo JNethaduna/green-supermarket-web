@@ -7,7 +7,7 @@
   <body>
     <jsp:include page="components/header.jsp" />
     <main>
-      <form action="/user/feedback/submit">
+      <form action="/user/feedback/submit" method="post">
         <h1>Feedback</h1>
         <textarea
           name="feedback"
