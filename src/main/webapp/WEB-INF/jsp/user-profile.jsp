@@ -1,10 +1,11 @@
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %> <%@ taglib prefix="fmt"
+uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <jsp:include page="components/meta.jsp" />
     <style>
-      body {
+      main {
         font-family: 'Arial', sans-serif;
         margin: 0;
         padding: 0;
@@ -47,6 +48,11 @@
         border: 1px solid #ddd;
       }
 
+      td a {
+        color: #4caf50;
+        text-decoration: none;
+      }
+
       th,
       td {
         padding: 10px;
@@ -61,43 +67,51 @@
   </head>
   <body>
     <jsp:include page="components/header.jsp" />
-    <section>
-      <h2>Welcome ${customer.fName} ${customer.lName}!</h2>
+    <main>
+      <section>
+        <h2>Welcome ${customer.firstName} ${customer.lastName}!</h2>
 
-      <p>
-        <strong>Address:</strong>
-        <span id="customerAddress">${customer.address}</span>
-      </p>
-      <p>
-        <strong>Email:</strong>
-        <span id="customerEmail">${customer.email}</span>
-      </p>
-      <p>
-        <strong>Phone Number:</strong>
-        <span id="customerPhone">${customer.phone}</span>
-      </p>
+        <p>
+          <strong>Address:</strong>
+          <span id="customerAddress">${customer.address}</span>
+        </p>
+        <p>
+          <strong>Email:</strong>
+          <span id="customerEmail">${customer.email}</span>
+        </p>
+        <p>
+          <strong>Phone Number:</strong>
+          <span id="customerPhone">${customer.phone}</span>
+        </p>
 
-      <h3>Your Orders:</h3>
+        <h3>Your Orders:</h3>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Order ID</th>
-            <th>Total Price</th>
-          </tr>
-        </thead>
-        <tbody id="orderTableBody">
-          <c:forEach item="${orders}" var="order">
-            <a href="/user/order/${order.id}">
+        <table>
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Total Price</th>
+            </tr>
+          </thead>
+          <tbody id="orderTableBody">
+            <c:forEach items="${orders}" var="order">
               <tr>
-                <td>${order.id}</td>
-                <td>${order.payment.price}</td>
+                <td>
+                  <a href="/user/order/${order.id}">${order.id}</a>
+                </td>
+                <td>
+                  <fmt:formatNumber
+                    value="${order.payment.amount}"
+                    type="currency"
+                    currencySymbol="LKR" />
+                </td>
               </tr>
-            </a>
-          </c:forEach>
-        </tbody>
-      </table>
-    </section>
+            </c:forEach>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
     <jsp:include page="components/footer.jsp" />
   </body>
 </html>

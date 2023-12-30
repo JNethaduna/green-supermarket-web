@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %> <%@ taglib prefix="fn"
-uri="jakarta.tags.functions" %>
+uri="jakarta.tags.functions" %> <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -54,7 +54,12 @@ uri="jakarta.tags.functions" %>
               src="/images/products/${fn:replace(fn:toLowerCase(product.name), ' ', '')}.jpg"
               alt="${product.name}" />
             <p class="name">${product.name}</p>
-            <small class="price">Rs. ${product.price}</small>
+            <small class="price">
+              <fmt:formatNumber
+                value="${product.price}"
+                type="currency"
+                currencySymbol="LKR" />
+            </small>
           </a>
         </c:forEach>
       </ul>

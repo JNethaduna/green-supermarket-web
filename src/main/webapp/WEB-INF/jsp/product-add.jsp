@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Green Supermarket</title>
+    <jsp:include page="components/meta.jsp" />
     <style>
-      body {
+      main {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
         display: flex;
@@ -60,35 +58,37 @@
   </head>
   <body>
     <jsp:include page="components/header-manager.jsp" />
-    <form action="/manage/product/add" method="post">
-      <h2>Add Product</h2>
+    <main>
+      <form action="/manage/product/add" method="post">
+        <h2>Add Product</h2>
 
-      <label for="productName">Product Name:</label>
-      <input type="text" id="productName" name="name" required />
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="name" required />
 
-      <label for="productDescription">Product Description:</label>
-      <textarea
-        id="productDescription"
-        name="description"
-        rows="4"
-        required></textarea>
+        <label for="productDescription">Product Description:</label>
+        <textarea
+          id="productDescription"
+          name="description"
+          rows="4"
+          required></textarea>
 
-      <label for="price">Price:</label>
-      <input
-        type="number"
-        id="price"
-        name="price"
-        min="0"
-        step="0.01"
-        required />
+        <label for="price">Price:</label>
+        <input
+          type="number"
+          id="price"
+          name="price"
+          min="0"
+          step="0.01"
+          required />
 
-      <label for="category">Category:</label>
-      <input type="text" id="category" name="category" required />
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" required />
 
-      <label for="stock">Stock:</label>
-      <input type="number" id="stock" name="stock" min="0" required />
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" min="0" required />
 
-      <input type="submit" value="Add Product" />
-    </form>
+        <input type="submit" value="Add Product" />
+      </form>
+    </main>
   </body>
 </html>

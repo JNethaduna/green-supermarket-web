@@ -69,7 +69,7 @@ public class CustomerController {
 
   @PostMapping("/user/profile/update")
   public String updateProfile(@ModelAttribute Customer customer) {
-    customerService.updateCustomer(customer);
+    customerService.updateCustomer(customer, userContextService.getCurrentCustomer());
     return "redirect:/user/profile";
   }
 }

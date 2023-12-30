@@ -3,7 +3,7 @@
   <head>
     <jsp:include page="components/meta.jsp" />
     <style>
-      body {
+      main {
         font-family: 'Arial', sans-serif;
         margin: 0;
         padding: 0;
@@ -57,31 +57,33 @@
   </head>
   <body>
     <jsp:include page="components/header-manager.jsp" />
-    <h1>Update Product Details</h1>
-    <form id="productForm" action="/manage/product/update" method="post">
-      <label for="ID">Product ID:</label>
-      <input type="text" id="ID" name="id" required />
+    <main>
+      <h1>Update Product Details</h1>
+      <form id="productForm" action="/manage/product/update" method="post">
+        <label for="ID">Product ID:</label>
+        <input type="text" id="ID" name="id" required />
 
-      <label for="Name">Name:</label>
-      <input type="text" id="Name" name="name" required />
+        <label for="Name">Name:</label>
+        <input type="text" id="Name" name="name" required />
 
-      <label for="Description">Description:</label>
-      <textarea
-        id="Description"
-        name="description"
-        rows="4"
-        required></textarea>
+        <label for="Description">Description:</label>
+        <textarea
+          id="Description"
+          name="description"
+          rows="4"
+          required></textarea>
 
-      <label for="Price">Price:</label>
-      <input type="number" id="Price" name="price" step="0.01" required />
+        <label for="Price">Price:</label>
+        <input type="number" id="Price" name="price" step="0.01" required />
 
-      <label for="Category">Category:</label>
-      <input type="text" id="Category" name="category" required />
+        <label for="Category">Category:</label>
+        <input type="text" id="Category" name="category" required />
 
-      <label for="Stock">Stock:</label>
-      <input type="number" id="Stock" name="stock" required />
+        <label for="Stock">Stock:</label>
+        <input type="number" id="Stock" name="stock" required />
 
-      <button type="submit">Update Details</button>
-    </form>
+        <button type="submit">Update Details</button>
+      </form>
+    </main>
   </body>
 </html>

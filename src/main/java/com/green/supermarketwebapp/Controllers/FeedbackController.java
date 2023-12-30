@@ -27,7 +27,7 @@ public class FeedbackController {
   public String getFeedbackList(Model model, @RequestParam(defaultValue = "0") int page,
       @RequestParam(defaultValue = "20") int size) {
     model.addAttribute("feedbacks", feedbackService.getFeedbacks(page, size));
-    return "manage-feedback";
+    return "feedback-list";
   }
 
   @PostMapping("/user/feedback/submit")

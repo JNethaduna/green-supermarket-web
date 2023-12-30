@@ -14,13 +14,11 @@ import com.green.supermarketwebapp.models.Customer;
 public class CustomerService {
   private final CustomerDAO customerRepository;
   private final PasswordEncoder passwordEncoder;
-  private final UserContextService userContextService;
 
-  public CustomerService(CustomerDAO customerRepository, PasswordEncoder passwordEncoder,
-      UserContextService userContextService) {
+  public CustomerService(CustomerDAO customerRepository, PasswordEncoder passwordEncoder) {
     this.customerRepository = customerRepository;
     this.passwordEncoder = passwordEncoder;
-    this.userContextService = userContextService;
+
   }
 
   public Customer getCustomer(Long id) {
@@ -41,8 +39,7 @@ public class CustomerService {
     return customerRepository.save(customer);
   }
 
-  public Customer updateCustomer(Customer customer) {
-    Customer currentCustomer = userContextService.getCurrentCustomer();
+  public Customer updateCustomer(Customer customer, Customer currentCustomer) {
     currentCustomer.setFName(customer.getFirstName());
     currentCustomer.setLName(customer.getLastName());
     currentCustomer.setAddress(customer.getAddress());

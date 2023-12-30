@@ -14,4 +14,8 @@ public class Helpers {
         .map(word -> word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase())
         .reduce("", (acc, word) -> acc + word + " ").trim();
   }
+
+  public static String LKRtoUSD(double lkr) {
+    return String.format("%.2f", lkr / 323);
+  }
 }

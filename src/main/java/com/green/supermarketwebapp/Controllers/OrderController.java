@@ -75,7 +75,12 @@ public class OrderController {
       @RequestParam(defaultValue = "0") int page,
       @RequestParam(defaultValue = "50") int size) {
     model.addAttribute("orders", orderService.getOrderList(status, page, size));
-    return "order-manager-view";
+    return "orders-manager-view";
+  }
+
+  @GetMapping("/manage/order/update")
+  public String getUpdateOrderStatus() {
+    return "order-status-update";
   }
 
   @PostMapping("/manage/order/update")

@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %> <%@ taglib prefix="fn"
-uri="jakarta.tags.functions" %>
+uri="jakarta.tags.functions" %> <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -123,10 +123,30 @@ uri="jakarta.tags.functions" %>
             <p>Total:</p>
           </div>
           <div class="total-amounts">
-            <p>LKR ${subtotal}</p>
-            <p>LKR 200.00</p>
-            <p>LKR ${(subtotal * 5)/100}</p>
-            <p>LKR ${subtotal + 200 + (subtotal * 5)/100}</p>
+            <p>
+              <fmt:formatNumber
+                value="${subtotal}"
+                type="currency"
+                currencySymbol="LKR" />
+            </p>
+            <p>
+              <fmt:formatNumber
+                value="200"
+                type="currency"
+                currencySymbol="LKR" />
+            </p>
+            <p>
+              <fmt:formatNumber
+                value="${(subtotal * 5)/100}"
+                type="currency"
+                currencySymbol="LKR" />
+            </p>
+            <p>
+              <fmt:formatNumber
+                value="${subtotal + 200 + (subtotal * 5)/100}"
+                type="currency"
+                currencySymbol="LKR" />
+            </p>
           </div>
         </div>
         <h2>Items Purchased</h2>
@@ -141,7 +161,12 @@ uri="jakarta.tags.functions" %>
                 </td>
                 <td>${item.product.name}</td>
                 <td>${item.quantity}</td>
-                <td>LKR ${item.product.price}</td>
+                <td>
+                  <fmt:formatNumber
+                    value="${item.product.price}"
+                    type="currency"
+                    currencySymbol="LKR" />
+                </td>
               </tr>
             </c:forEach>
           </table>
@@ -151,7 +176,7 @@ uri="jakarta.tags.functions" %>
       <div class="right-column">
         <div class="address-section">
           <h2>Shipping Address</h2>
-          <p>${customer.fName} ${customer.lName}</p>
+          <p>${customer.firstName} ${customer.lastName}</p>
           <p>${customer.address}</p>
           <p>Email: ${customer.email}</p>
         </div>

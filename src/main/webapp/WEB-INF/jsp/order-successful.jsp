@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -67,7 +68,7 @@
       <p>Your order details:</p>
       <!-- Include order details here, such as order number, items, total, etc. -->
 
-      <p>Estimated delivery date: 31.01.2024</p>
+      <p>Estimated delivery date: ${delivery}</p>
 
       <p>For any inquiries, please contact our customer support.</p>
 

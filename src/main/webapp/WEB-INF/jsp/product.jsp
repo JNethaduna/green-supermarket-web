@@ -1,4 +1,5 @@
-<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %> <%@ taglib prefix="fmt"
+uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -131,7 +132,12 @@
         <p class="bold-label">Description:</p>
         <p>${product.description}</p>
         <p class="bold-label">Price:</p>
-        <p>LKR ${product.price}</p>
+        <p>
+          <fmt:formatNumber
+            value="${product.price}"
+            type="currency"
+            currencySymbol="LKR" />
+        </p>
         <p class="quantity-label bold-label">Quantity:</p>
         <form action="/user/cart/add" method="post">
           <input type="hidden" name="id" value="${product.id}" />

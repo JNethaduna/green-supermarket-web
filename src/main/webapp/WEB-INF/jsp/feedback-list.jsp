@@ -7,9 +7,8 @@ uri="jakarta.tags.functions" %>
     <link rel="stylesheet" href="/css/feedback-list.css" />
   </head>
   <body>
-    <jsp:include page="components/header.jsp" />
+    <jsp:include page="components/header-manager.jsp" />
     <main>
-      <jsp:include page="components/header-manager.jsp" />
       <c:forEach items="${feedbacks}" var="feedback">
         <div class="feedback">
           <p>${feedback.feedback}</p>

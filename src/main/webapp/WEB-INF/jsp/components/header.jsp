@@ -14,5 +14,6 @@
       </c:otherwise>
     </c:choose>
     <a href="/user/feedback">Feedback</a>
+    <a href="/user/profile">Profile</a>
   </div>
 </header>

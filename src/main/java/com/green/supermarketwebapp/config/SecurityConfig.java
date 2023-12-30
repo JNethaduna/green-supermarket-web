@@ -40,9 +40,9 @@ public class SecurityConfig {
     http
         .csrf(csrf -> csrf.disable())
         .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-            .requestMatchers("/register", "/product/**", "/**").permitAll()
+            .requestMatchers("/manage/**").hasRole("MANAGER")
             .requestMatchers("/user/**").hasRole("CUSTOMER")
-            .requestMatchers("/manager/**").hasRole("MANAGER"))
+            .anyRequest().permitAll())
         .formLogin(formLogin -> formLogin
             .loginPage("/login")
             .successHandler(authenticationSuccessHandler())

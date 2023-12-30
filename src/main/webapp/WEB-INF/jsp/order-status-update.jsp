@@ -3,7 +3,7 @@
   <head>
     <jsp:include page="components/meta.jsp" />
     <style>
-      body {
+      main {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background-color: var(--tertiary-color);
         margin: 0;
@@ -64,21 +64,23 @@
   </head>
   <body>
     <jsp:include page="components/header-manager.jsp" />
-    <div class="container">
-      <h2>Update Order Status</h2>
-      <form>
-        <label for="orderNumber">Order ID:</label>
-        <input type="text" id="orderNumber" name="id" required />
+    <main>
+      <div class="container">
+        <h2>Update Order Status</h2>
+        <form>
+          <label for="orderNumber">Order ID:</label>
+          <input type="text" id="orderNumber" name="id" required />
 
-        <label for="newStatus">New Status:</label>
-        <select id="newStatus" name="status" required>
-          <option value="processing">Processing</option>
-          <option value="shipped">Shipped</option>
-          <option value="delivered">Delivered</option>
-        </select>
-        <button type="submit">Update Status</button>
-      </form>
-    </div>
+          <label for="newStatus">New Status:</label>
+          <select id="newStatus" name="status" required>
+            <option value="processing">Processing</option>
+            <option value="shipped">Shipped</option>
+            <option value="delivered">Delivered</option>
+          </select>
+          <button type="submit">Update Status</button>
+        </form>
+      </div>
+    </main>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
       $(document).ready(function () {

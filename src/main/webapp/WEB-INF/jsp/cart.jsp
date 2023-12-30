@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %> <%@ taglib prefix="fn"
-uri="jakarta.tags.functions" %>
+uri="jakarta.tags.functions" %> <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -89,6 +89,7 @@ uri="jakarta.tags.functions" %>
       }
 
       .checkout-button {
+        text-decoration: none;
         background-color: var(--primary-color);
         color: var(--secondary-color);
         padding: 12px 20px;
@@ -159,12 +160,24 @@ uri="jakarta.tags.functions" %>
             <c:forEach items="${cart}" var="item">
               <tr>
                 <td class="product-image">
-                  <img src="almondmilk.jpg" alt="Almond Milk" />
+                  <img
+                    src="/images/products/${fn:replace(fn:toLowerCase(item.product.name), ' ', '')}.jpg"
+                    alt="${item.product.name}" />
                 </td>
                 <td>${item.product.name}</td>
-                <td>LKR ${item.product.price}</td>
+                <td>
+                  <fmt:formatNumber
+                    value="${item.product.price}"
+                    type="currency"
+                    currencySymbol="LKR" />
+                </td>
                 <td>${item.quantity}</td>
-                <td>LKR ${item.product.price * item.quantity}</td>
+                <td>
+                  <fmt:formatNumber
+                    value="${item.product.price * item.quantity}"
+                    type="currency"
+                    currencySymbol="LKR" />
+                </td>
                 <td>
                   <button type="submit" class="trash-button">
                     <i class="bx bx-trash"></i>
@@ -192,7 +205,7 @@ uri="jakarta.tags.functions" %>
           </div>
         </div>
         <div class="paypal-button-container">
-          <button type="button" class="checkout-button">Checkout</button>
+          <a href="/user/checkout" class="checkout-button">Checkout</a>
         </div>
       </div>
     </section>

@@ -3,7 +3,7 @@
   <head>
     <jsp:include page="components/meta.jsp" />
     <style>
-      body {
+      main {
         min-height: 100vh;
         display: flex;
         flex-direction: column;
@@ -30,10 +30,12 @@
   </head>
   <body>
     <jsp:include page="components/header.jsp" />
-    <h1>Error</h1>
-    <p>Oh no! Something went wrong!</p>
-    <p><strong>Message:</strong> ${message}</p>
-    <p><a href="/">Go back to the home page</a></p>
+    <main>
+      <h1>Error</h1>
+      <p>Oh no! Something went wrong!</p>
+      <p><strong>Message:</strong> ${message}</p>
+      <p><a href="/">Go back to the home page</a></p>
+    </main>
     <jsp:include page="components/footer.jsp" />
   </body>
 </html>

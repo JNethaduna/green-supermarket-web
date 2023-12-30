@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %> <%@ taglib prefix="fn"
-uri="jakarta.tags.functions" %>
+uri="jakarta.tags.functions" %> <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +18,7 @@ uri="jakarta.tags.functions" %>
         padding: 0;
       }
 
-      body {
+      main {
         font-family: Arial, sans-serif;
         display: flex;
         justify-content: center;
@@ -97,48 +97,55 @@ uri="jakarta.tags.functions" %>
   </head>
   <body>
     <jsp:include page="components/header-manager.jsp" />
-    <div class="container">
-      <h1>Orders</h1>
-      <c:forEach item="${orders}" var="order">
-        <div class="order">
-          <div class="order-id">${order.id}</div>
-          <table>
-            <tr>
-              <th>Order Date</th>
-              <td>${order.placedAt}</td>
-            </tr>
-            <tr>
-              <th>Customer Name</th>
-              <td>${order.customer.fName} ${order.customer.lName}</td>
-            </tr>
-            <tr>
-              <th>Products</th>
-              <td colspan="3">
-                <table class="inner-table">
-                  <c:forEach items="${order.orderDetails}" var="orderDetail">
-                    <tr>
-                      <td>${orderDetail.product.name}</td>
-                      <td>${orderDetail.quantity}</td>
-                    </tr>
-                  </c:forEach>
-                </table>
-              </td>
-            </tr>
-            <tr>
-              <th>Total Amount</th>
-              <td colspan="3">${order.payment.amount}</td>
-            </tr>
-            <tr>
-              <th>Delivery Address</th>
-              <td colspan="3">${order.customer.address}</td>
-            </tr>
-            <tr>
-              <th>Contact Number</th>
-              <td colspan="3">${order.customer.phone}</td>
-            </tr>
-          </table>
-        </div>
-      </c:forEach>
-    </div>
+    <main>
+      <div class="container">
+        <h1>Orders</h1>
+        <c:forEach items="${orders}" var="order">
+          <div class="order">
+            <div class="order-id">${order.id}</div>
+            <table>
+              <tr>
+                <th>Order Date</th>
+                <td>${order.placementTime}</td>
+              </tr>
+              <tr>
+                <th>Customer Name</th>
+                <td>${order.customer.firstName} ${order.customer.lastName}</td>
+              </tr>
+              <tr>
+                <th>Products</th>
+                <td colspan="3">
+                  <table class="inner-table">
+                    <c:forEach items="${order.orderDetails}" var="orderDetail">
+                      <tr>
+                        <td>${orderDetail.product.name}</td>
+                        <td>${orderDetail.quantity}</td>
+                      </tr>
+                    </c:forEach>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <th>Total Amount</th>
+                <td colspan="3">
+                  <fmt:formatNumber
+                    value="${order.payment.amount}"
+                    type="currency"
+                    currencySymbol="LKR" />
+                </td>
+              </tr>
+              <tr>
+                <th>Delivery Address</th>
+                <td colspan="3">${order.customer.address}</td>
+              </tr>
+              <tr>
+                <th>Contact Number</th>
+                <td colspan="3">${order.customer.phone}</td>
+              </tr>
+            </table>
+          </div>
+        </c:forEach>
+      </div>
+    </main>
   </body>
 </html>
