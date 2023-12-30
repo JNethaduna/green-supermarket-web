@@ -34,4 +34,9 @@ public class FeedbackController {
     feedbackService.saveFeedback(feedback);
     return "redirect:/feedback-success";
   }
+
+  @GetMapping("/feedback-success")
+  public String getFeedbackSuccess() {
+    return "feedback-success";
+  }
 }

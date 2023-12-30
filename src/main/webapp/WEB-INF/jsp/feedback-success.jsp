@@ -17,8 +17,8 @@
       }
 
       p {
-        margin-top: 1rem;
         margin-bottom: 0.5rem;
+        margin-top: 1rem;
       }
 
       a {
@@ -32,9 +32,7 @@
   <body>
     <jsp:include page="components/header.jsp" />
     <main>
-      <h1>Error</h1>
-      <p>Oh no! Something went wrong!</p>
-      <p><strong>Message:</strong> ${message}</p>
+      Your feedback has been submitted successfully! Thank you!
       <p><a href="/">Go back to the home page</a></p>
     </main>
     <jsp:include page="components/footer.jsp" />
