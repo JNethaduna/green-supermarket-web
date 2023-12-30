@@ -103,7 +103,7 @@ uri="jakarta.tags.fmt" %>
                   <fmt:formatNumber
                     value="${order.payment.amount}"
                     type="currency"
-                    currencySymbol="LKR" />
+                    currencySymbol="USD" />
                 </td>
               </tr>
             </c:forEach>

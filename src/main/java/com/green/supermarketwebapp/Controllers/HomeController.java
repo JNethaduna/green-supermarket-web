@@ -23,7 +23,7 @@ public class HomeController {
     this.productService = productService;
   }
 
-  @GetMapping("/")
+  @GetMapping("/") // This is equivalent to doGet() in Servlets
   public String home(Model model) {
     model.addAttribute("products", productService.getPopularProducts());
     return "index";

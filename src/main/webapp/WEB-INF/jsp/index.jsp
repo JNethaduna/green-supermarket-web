@@ -26,7 +26,7 @@ uri="jakarta.tags.functions" %> <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
         <a href="/product/list?category=beverages" class="category">
           <li>Beverages</li>
         </a>
-        <a href="/product/list?category=frozen-fresh" class="category">
+        <a href="/product/list?category=frozen-foods" class="category">
           <li>Frozen Foods</li>
         </a>
         <a href="/product/list?category=pantry-staples" class="category">
